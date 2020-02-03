@@ -1,0 +1,16 @@
+---
+    - name: Install docker
+      hosts: all
+      become: True
+      pre_tasks:
+        - name: install requirements
+          apt:
+            name: gpg
+            update_cache: yes
+      roles:
+        - geerlingguy.docker
+        - geerlingguy.pip
+      vars:
+        pip_package: python3-pip
+        pip_install_packages:
+          - name: docker

@@ -1,0 +1,44 @@
+---
+# tasks file for Phill93.traefik
+  - name: Install required tools
+    become: true
+    package:
+      name: "{{ traefik_tools }}"
+      state: present
+
+  - name: Create traefik configuration directory
+    become: true
+    file:
+      path: /etc/traefik
+      state: directory
+      owner: root
+      group: root
+      mode: 0750
+
+  - name: Generate static traefik configuration
+    become: true
+    template:
+      src: templates/traefik.yaml.j2
+      dest: /etc/traefik/traefik.yaml
+      owner: root
+      group: root
+      mode: 0640
+      validate: /usr/bin/yamllint %s
+
+  - name: Generate dynamic traefik configuration
+    become: true
+    template:
+      src: templates/dynamic.yaml.j2
+      dest: /etc/traefik/dynamic.yaml
+      owner: root
+      group: root
+      mode: 0640
+      validate: /usr/bin/yamllint %s
+
+  - name: Create traefik container
+    become: true
+    docker_container:
+      name: traefik
+      image: traefik
+      ports:
+          - "80:80"

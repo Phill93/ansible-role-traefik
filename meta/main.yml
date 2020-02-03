@@ -1,0 +1,19 @@
+---
+galaxy_info:
+  author: Phill93
+  description: Setup traefik and configures it
+
+  license: MIT
+
+  min_ansible_version: 2.8
+
+  platforms:
+    - name: Docker
+      versions:
+        - all
+
+  galaxy_tags:
+    - traefik
+    - docker
+
+dependencies: []

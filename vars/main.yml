@@ -1,0 +1,4 @@
+---
+# vars file for Phill93.traefik
+  traefik_tools:
+    - yamllint
