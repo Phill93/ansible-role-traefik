@@ -24,6 +24,7 @@
       group: root
       mode: 0640
       validate: /usr/bin/yamllint %s
+    register: "traefik_cmd_static_conf"
 
   - name: Generate dynamic traefik configuration
     become: true
@@ -34,6 +35,7 @@
       group: root
       mode: 0640
       validate: /usr/bin/yamllint %s
+    register: "traefik_cmd_dyn_conf"
 
   - name: Create traefik container
     become: true
@@ -41,5 +43,6 @@
       name: traefik
       image: traefik
       restart_policy: always
+      restart: "{{ True if (traefik_cmd_static_conf.changed or traefik_cmd_dyn_conf.changed) else False }}"
       ports:
           - "80:80"
