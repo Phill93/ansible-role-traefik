@@ -40,5 +40,6 @@
     docker_container:
       name: traefik
       image: traefik
+      restart_policy: always
       ports:
           - "80:80"
