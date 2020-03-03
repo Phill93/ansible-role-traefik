@@ -45,4 +45,4 @@
       restart_policy: always
       restart: "{{ True if (traefik_cmd_static_conf.changed or traefik_cmd_dyn_conf.changed) else False }}"
       ports: "{{ traefik_ports }}"
-      volumes: "{{ ['/var/run/docker.sock:/var/run/docker.sock'] if traefik_docker_sock else [] }}"
+      volumes: "{{ traefik_volumes + (['/var/run/docker.sock:/var/run/docker.sock'] if traefik_docker_sock else []) }}"
