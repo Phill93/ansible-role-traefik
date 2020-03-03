@@ -25,6 +25,8 @@ Role Variables
 
     traefik_ports:
       - "80:80"
+  
+    traefik_docker_sock: True
   ```
 
 Example Playbook
