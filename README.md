@@ -22,6 +22,9 @@ Role Variables
             address: :80
 
     traefik_dynamic_conf: {}
+
+    traefik_ports:
+      - "80:80"
   ```
 
 Example Playbook
