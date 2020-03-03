@@ -3,3 +3,16 @@
   hosts: all
   roles:
     - role: Phill93.traefik
+  vars:
+    traefik_static_conf:
+      providers:
+        file:
+          filename: /etc/traefik/dynamic_conf.yaml
+      entryPoints:
+          web:
+              address: :80
+          web-secure:
+              address: :443
+    traefik_ports:
+      - "80:80"
+      - "443:443"

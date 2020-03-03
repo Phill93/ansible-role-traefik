@@ -38,3 +38,4 @@ def test_docker(host):
 
 def test_ports(host):
     assert host.socket("tcp://80").is_listening
+    assert host.socket("tcp://443").is_listening
