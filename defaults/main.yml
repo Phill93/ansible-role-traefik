@@ -14,3 +14,4 @@
 
   traefik_docker_sock: True
   traefik_restart_policy: unless-stopped
+  traefik_network: traefik

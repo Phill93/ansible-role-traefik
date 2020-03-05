@@ -37,6 +37,11 @@
       validate: /usr/bin/yamllint %s
     register: "traefik_cmd_dyn_conf"
 
+  - name: Create traefik network
+    become: true
+    docker_network:
+      name: "{{ traefik_network }}"
+
   - name: Create traefik container
     become: true
     docker_container:
@@ -46,3 +51,5 @@
       restart: "{{ True if (traefik_cmd_static_conf.changed or traefik_cmd_dyn_conf.changed) else False }}"
       ports: "{{ traefik_ports }}"
       volumes: "{{ traefik_volumes + (['/var/run/docker.sock:/var/run/docker.sock'] if traefik_docker_sock else []) }}"
+      networks:
+        - name: "{{ traefik_network }}"
