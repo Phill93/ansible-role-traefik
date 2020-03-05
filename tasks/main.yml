@@ -42,7 +42,7 @@
     docker_container:
       name: traefik
       image: traefik
-      restart_policy: always
+      restart_policy: "{{ traefik_restart_policy }}"
       restart: "{{ True if (traefik_cmd_static_conf.changed or traefik_cmd_dyn_conf.changed) else False }}"
       ports: "{{ traefik_ports }}"
       volumes: "{{ traefik_volumes + (['/var/run/docker.sock:/var/run/docker.sock'] if traefik_docker_sock else []) }}"

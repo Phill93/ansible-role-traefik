@@ -13,3 +13,4 @@
     - "80:80"
 
   traefik_docker_sock: True
+  traefik_restart_policy: unless-stopped
