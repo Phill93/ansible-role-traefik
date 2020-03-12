@@ -2,7 +2,7 @@
   traefik_static_conf:
     providers:
       file:
-        filename: /etc/traefik/dynamic_conf.yaml
+        filename: /etc/traefik/dynamic_conf.json
     entryPoints:
         web:
             address: :80

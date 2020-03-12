@@ -16,7 +16,7 @@ def test_config_dir(host):
 
 
 def test_config_static(host):
-    conf_file = "/etc/traefik/traefik.yaml"
+    conf_file = "/etc/traefik/traefik.json"
     assert host.file(conf_file).is_file
     assert host.file(conf_file).user == "root"
     assert host.file(conf_file).group == "root"
@@ -24,7 +24,7 @@ def test_config_static(host):
 
 
 def test_config_dynamic(host):
-    conf_file = "/etc/traefik/dynamic.yaml"
+    conf_file = "/etc/traefik/dynamic.json"
     assert host.file(conf_file).is_file
     assert host.file(conf_file).user == "root"
     assert host.file(conf_file).group == "root"

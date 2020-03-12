@@ -1,8 +1,8 @@
 ---
 # vars file for Phill93.traefik
   traefik_tools:
-    - yamllint
+    - jsonlint
 
   traefik_volumes:
-    - "/etc/traefik/traefik.yaml:/etc/traefik/traefik.yaml"
-    - "/etc/traefik/dynamic.yaml:/etc/traefik/dynamic_conf.yaml"
+    - "/etc/traefik/traefik.json:/etc/traefik/traefik.json"
+    - "/etc/traefik/dynamic.json:/etc/traefik/dynamic_conf.json"

@@ -18,23 +18,23 @@
   - name: Generate static traefik configuration
     become: true
     template:
-      src: templates/traefik.yaml.j2
-      dest: /etc/traefik/traefik.yaml
+      src: templates/traefik.json.j2
+      dest: /etc/traefik/traefik.json
       owner: root
       group: root
       mode: 0640
-      validate: /usr/bin/yamllint %s
+      validate: /usr/bin/jsonlint-php %s
     register: "traefik_cmd_static_conf"
 
   - name: Generate dynamic traefik configuration
     become: true
     template:
-      src: templates/dynamic.yaml.j2
-      dest: /etc/traefik/dynamic.yaml
+      src: templates/dynamic.json.j2
+      dest: /etc/traefik/dynamic.json
       owner: root
       group: root
       mode: 0640
-      validate: /usr/bin/yamllint %s
+      validate: /usr/bin/jsonlint-php %s
     register: "traefik_cmd_dyn_conf"
 
   - name: Create traefik network
